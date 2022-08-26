@@ -108,29 +108,29 @@ bool isIgual(char chave1[], char chave2[]){
     int tamanho1 = getTamanho(chave1);
     int tamanho2 = getTamanho(chave2);
 
-    if(tamanho1 != tamanho2)
+    if(tamanho1 != tamanho2) // se forem de tamanhos diferentes, logo não são iguais
         return false;
     
-    for(int i = 0; i < tamanho1; i++){
-        if(chave1[i] != chave2[i]){
-            return false;
+    for(int i = 0; i < tamanho1; i++){ //Verifica se em cada index os caracteres são iguais
+        if(chave1[i] != chave2[i]){ 
+            return false;//se Não forem, retorna falso
         }
     }
 
-    return true;
+    return true; // se Não retornou falso, logo são iguais
 }
 
 //Busca um item pela sua chave e retorna a variável nó que contém ele
 no *buscaPorChave(tabelaHash *tabela, char chave[]){
-        int hash = calculaHash(chave); 
-        int index = getIndex(hash);
-        no *node = (*tabela)[index];
-        while (node != NULL){
+        int hash = calculaHash(chave); //gera o hash dessa chave
+        int index = getIndex(hash); //gera o index a partir do hash
+        no *node = (*tabela)[index]; //pega o item dentro do index
+        while (node != NULL){ // se existir item, compara as chaves até achar o item desejado
             if(isIgual(node -> produto.codigo, chave)){
-                return criarNo(node -> produto);
+                return criarNo(node -> produto); //retorna o item desejado
             }
         }
-        return NULL;
+        return NULL; // retorna null caso o item não exista
 }
 
 // Imprime todos os produtos contidos na tabela
