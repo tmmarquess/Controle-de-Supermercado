@@ -103,6 +103,36 @@ void inserir(tabelaHash *tabela, produto prod){
     }
 }
 
+// Compara 2 Strings
+bool isIgual(char chave1[], char chave2[]){
+    int tamanho1 = getTamanho(chave1);
+    int tamanho2 = getTamanho(chave2);
+
+    if(tamanho1 != tamanho2)
+        return false;
+    
+    for(int i = 0; i < tamanho1; i++){
+        if(chave1[i] != chave2[i]){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+//Busca um item pela sua chave e retorna a variável nó que contém ele
+no *buscaPorChave(tabelaHash *tabela, char chave[]){
+        int hash = calculaHash(chave); 
+        int index = getIndex(hash);
+        no *node = (*tabela)[index];
+        while (node != NULL){
+            if(isIgual(node -> produto.codigo, chave)){
+                return criarNo(node -> produto);
+            }
+        }
+        return NULL;
+}
+
 // Imprime todos os produtos contidos na tabela
 void imprimeTabela(tabelaHash tabela){
     for(int i = 0; i < TAMANHO; i++){ //Percorre todo o vetor da tabelaHash

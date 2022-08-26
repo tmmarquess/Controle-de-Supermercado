@@ -42,4 +42,14 @@ int main(){
     inserir(&teste, prodNovo);
 
     imprimeTabela(teste);
+
+    //código para testar busca
+    char batata[] = "temper";
+    no *hihi = buscaPorChave(&teste,batata);
+
+    printf("Nome: %s\n", hihi -> produto.nome);
+    printf("Codigo: %s\n", hihi -> produto.codigo);
+    printf("Quantidade: %d\n", hihi -> produto.quantidade);
+    printf("Preco: %.2f\n", hihi -> produto.preco);
+    printf("==========================================\n");
 }
