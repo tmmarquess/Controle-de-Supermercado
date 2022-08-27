@@ -137,7 +137,8 @@ no *buscaPorChave(tabelaHash *tabela, char chave[]){
 void imprimeTabela(tabelaHash tabela){
     for(int i = 0; i < TAMANHO; i++){ //Percorre todo o vetor da tabelaHash
         if(tabela[i] != NULL){ // se o item do vetor não for nulo, imprime a lista contida nele 
-            printf("Index %d:\n", i);
+            printf("\nIndex %d:\n", i);
+            printf("\t");
             imprimeLista(tabela[i]);
         }
     }
