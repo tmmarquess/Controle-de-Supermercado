@@ -55,7 +55,7 @@ void inserirNo(no **primeiroItem, produto prod){
 /* Função para retirar itens da lista, recebe como parâmetro o primeiro 
 *  item da lista a se retirar o item, e o index do item a ser retirado
 */
-void retirar(no **primeiroItem, int index){
+void retirarNo(no **primeiroItem, int index){
 
     if(vazia(*primeiroItem)){
         return;

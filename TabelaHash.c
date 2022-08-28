@@ -120,6 +120,26 @@ bool isIgual(char chave1[], char chave2[]){
     return true; // se Não retornou falso, logo são iguais
 }
 
+bool remover(tabelaHash *tabela, char chave[]){
+    int hash = calculaHash(chave);
+    int index = getIndex(hash);
+
+    no *aux = (*tabela)[index];
+    int pos = 0;
+    if(aux != NULL){
+        while (aux != NULL){
+            if(isIgual(aux -> produto.codigo, chave)){
+                retirarNo(&(*tabela)[index], pos);
+                return true;
+            }
+            pos += 1;
+            aux = aux -> prox;
+        }
+        
+    }
+    return false;
+}
+
 //Busca um item pela sua chave e retorna a variável nó que contém ele
 no *buscaPorChave(tabelaHash *tabela, char chave[]){
         int hash = calculaHash(chave); //gera o hash dessa chave

@@ -41,16 +41,25 @@ int main(){
     prodNovo.quantidade = 3;
     inserir(&teste, prodNovo);
 
+    strcpy(prodNovo.nome, "Batata");
+    strcpy(prodNovo.codigo, "legumes");
+    prodNovo.preco = 5;
+    prodNovo.quantidade = 3;
+    inserir(&teste, prodNovo);
+
+
+    remover(&teste, prodNovo.codigo);
+
     imprimeTabela(teste);
 
-    //código para testar busca
-    char batata[] = "temper";
-    no *hihi = buscaPorChave(&teste,batata);
-    if(hihi != NULL){
-        printf("Nome: %s\n", hihi -> produto.nome);
-        printf("Codigo: %s\n", hihi -> produto.codigo);
-        printf("Quantidade: %d\n", hihi -> produto.quantidade);
-        printf("Preco: %.2f\n", hihi -> produto.preco);
-        printf("==========================================\n");
-    }
+    // //código para testar busca
+    // char batata[] = "temper";
+    // no *hihi = buscaPorChave(&teste,batata);
+    // if(hihi != NULL){
+    //     printf("Nome: %s\n", hihi -> produto.nome);
+    //     printf("Codigo: %s\n", hihi -> produto.codigo);
+    //     printf("Quantidade: %d\n", hihi -> produto.quantidade);
+    //     printf("Preco: %.2f\n", hihi -> produto.preco);
+    //     printf("==========================================\n");
+    // }
 }
