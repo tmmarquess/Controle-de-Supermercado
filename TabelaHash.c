@@ -164,6 +164,23 @@ bool cheia(tabelaHash *tabela) {
 	return true; // todas as posicoes estao ocupadas portanto esta cheia
 }
 
+int tamanho(tabelaHash *tabela) {
+	int tam = 0;
+
+	for (int i = 0; i < TAMANHO; i++) {
+		if ((*tabela)[i] != NULL) {
+			no *aux = (*tabela)[i];
+			
+			while (aux != NULL) {
+				aux = aux->prox;
+				tam++;
+			}
+		}
+	}
+	
+	return tam;
+}
+
 // Imprime todos os produtos contidos na tabela
 void imprimeTabela(tabelaHash tabela){
     for(int i = 0; i < TAMANHO; i++){ //Percorre todo o vetor da tabelaHash
