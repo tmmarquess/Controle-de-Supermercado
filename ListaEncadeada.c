@@ -74,10 +74,15 @@ void retirar(no **primeiroItem, int index){
     // verifica se o index a se retirar está contido na lista
     if(index < qntDeItens && index >= 0){
         if(index == 0){
-            no *aux = (*primeiroItem);
-            (*primeiroItem) = (*primeiroItem) -> prox;
-            (*primeiroItem) -> ant = NULL;
-            free(aux);
+            if(qntDeItens == 1){
+                free(*primeiroItem);
+                (*primeiroItem) = NULL;
+            }else{
+                no *aux = (*primeiroItem);
+                (*primeiroItem) = (*primeiroItem) -> prox;
+                (*primeiroItem) -> ant = NULL;
+                free(aux);
+            }
         }else{
             for(int i = 0; i < index-1; i++){
                 atual = atual -> prox;
