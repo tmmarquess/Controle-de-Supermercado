@@ -134,6 +134,16 @@ no *buscaPorChave(tabelaHash *tabela, char chave[]){
         return NULL; // retorna null caso o item nÃ£o exista
 }
 
+// verifica se a tabela cheia (com pelo menos um produto em todas as posições)
+bool cheia(tabelaHash *tabela) {
+	for (int i = 0; i < TAMANHO; i++) {
+		if ((*tabela)[i] == NULL) { 
+			return false; // se alguma posicao nao for null entao nao esta cheia
+		}
+	}
+	return true; // todas as posicoes estao ocupadas portanto esta cheia
+}
+
 // Imprime todos os produtos contidos na tabela
 void imprimeTabela(tabelaHash tabela){
     for(int i = 0; i < TAMANHO; i++){ //Percorre todo o vetor da tabelaHash
