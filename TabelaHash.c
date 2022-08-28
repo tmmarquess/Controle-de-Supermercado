@@ -181,6 +181,24 @@ int tamanho(tabelaHash *tabela) {
 	return tam;
 }
 
+void limpar(tabelaHash *tabela)
+ {	
+	for (int i = 0; i < TAMANHO; i++) 
+	{
+		no *ant, *aux, *inicio;
+		ant = aux = inicio = tabela[i];
+			while (aux != NULL) 
+			{
+				aux = aux->prox;
+				aux->ant = NULL;
+				ant->prox = NULL;
+				free(ant);
+				inicio = aux;
+			}
+		tabela[i] = inicio;
+	}
+}
+
 // Imprime todos os produtos contidos na tabela
 void imprimeTabela(tabelaHash tabela){
     for(int i = 0; i < TAMANHO; i++){ //Percorre todo o vetor da tabelaHash
