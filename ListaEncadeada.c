@@ -103,8 +103,8 @@ void imprimeLista(no *primeiroItem){
             printf("Nome: %s\n", atual -> produto.nome);
             printf("Codigo: %s\n", atual -> produto.codigo);
             printf("Quantidade: %d\n", atual -> produto.quantidade);
-            printf("Preco: %.2f\n", atual -> produto.preco);
-            printf("==========================================\n");
+            printf("Preco: R$%.2f\n", atual -> produto.preco);
+            printf("\n\n");
 
             atual = atual -> prox;
         }

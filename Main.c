@@ -6,24 +6,31 @@ int main(){
     iniciaTabela(&Estoque);
     produto prodNovo;
     int opcao;
-
+        
     do
     {
+    	desenhaBordas();
         opcao = printMENU();
         system("cls");
         if(opcao == 1)
         {
-            prodNovo = printInserir(&Estoque);
+        	desenhaBordas();
+            prodNovo = printInserir();
+            inserir(&Estoque, prodNovo);
         }
         if(opcao == 3) {
-            imprimeTabela(&Estoque);
+        	printImprimir(Estoque);
         }
         if(opcao == 4)
         {
+        	desenhaBordas();
             printBusca(&Estoque);
         }
-        system("pause");
-        system("cls");
+    gotoxy(46, 1); system("pause");
+    system("cls");
 
     }while(opcao != 0);
+    
+
+	return 0;
 }
