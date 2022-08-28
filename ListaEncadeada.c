@@ -17,6 +17,7 @@ typedef struct no
 {
     produto produto; // Armazena o produto
     struct no *prox; // Aponta para o próximo produto da lista
+    struct no *ant; // Aponta para o produto anterior da lista
 }no;
 
 /* Função para criar a lista. É passado como parâmetro o primeiro
@@ -27,6 +28,7 @@ no* criarNo(produto prod){
     no* item = (no*) malloc(sizeof(no));
     item -> produto = prod;
     item -> prox = NULL;
+    item -> ant = NULL;
     return item;
 }
 
@@ -38,19 +40,16 @@ bool vazia(no *primeiroItem){
 *  item da lista em que o produto será adicionado, e o produto a se adicionar
 */
 void inserirNo(no **primeiroItem, produto prod){
+    no *novoItem = criarNo(prod);
 
     if(vazia((*primeiroItem))){
-        printf("Lista nao iniciada!\n");
+        (*primeiroItem) = novoItem;
         return;
     }
 
-    no *novoItem = criarNo(prod);
-    no *atual = (*primeiroItem);
-
-    while (atual -> prox != NULL)
-        atual = atual -> prox;
-
-    atual -> prox = novoItem;
+    novoItem -> prox = (*primeiroItem);
+    (*primeiroItem) -> ant = novoItem;
+    (*primeiroItem) = novoItem;
 }
 
 /* Função para retirar itens da lista, recebe como parâmetro o primeiro 
@@ -77,16 +76,17 @@ void retirar(no **primeiroItem, int index){
         if(index == 0){
             no *aux = (*primeiroItem);
             (*primeiroItem) = (*primeiroItem) -> prox;
+            (*primeiroItem) -> ant = NULL;
             free(aux);
         }else{
             for(int i = 0; i < index-1; i++){
                 atual = atual -> prox;
             }
             no *aux = atual -> prox;
-            if(aux == NULL){
-                atual -> prox = aux;
-            }else{
-                atual -> prox = aux -> prox;
+
+            atual -> prox = aux -> prox;
+            if(aux -> prox != NULL){
+                aux -> prox -> ant = atual;
             }
             free(aux);
         }

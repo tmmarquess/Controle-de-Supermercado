@@ -129,6 +129,7 @@ no *buscaPorChave(tabelaHash *tabela, char chave[]){
             if(isIgual(node -> produto.codigo, chave)){
                 return criarNo(node -> produto); //retorna o item desejado
             }
+            node = node -> prox;
         }
         return NULL; // retorna null caso o item não exista
 }
