@@ -185,17 +185,10 @@ void limpar(tabelaHash *tabela)
  {	
 	for (int i = 0; i < TAMANHO; i++) 
 	{
-		no *ant, *aux, *inicio;
-		ant = aux = inicio = tabela[i];
-			while (aux != NULL) 
+			while ((*tabela)[i]!= NULL) 
 			{
-				aux = aux->prox;
-				aux->ant = NULL;
-				ant->prox = NULL;
-				free(ant);
-				inicio = aux;
+				retirarNo(&(*tabela)[i], 0);
 			}
-		tabela[i] = inicio;
 	}
 }
 
