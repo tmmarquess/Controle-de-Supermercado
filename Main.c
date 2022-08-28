@@ -10,6 +10,7 @@ int main(){
     do
     {
         opcao = printMENU();
+        system("cls");
         if(opcao == 1)
         {
             prodNovo = printInserir(&Estoque);
@@ -21,6 +22,8 @@ int main(){
         {
             printBusca(&Estoque);
         }
+        system("pause");
+        system("cls");
 
     }while(opcao != 0);
 }
