@@ -26,11 +26,10 @@ int main(){
         	desenhaBordas();
             printBusca(&Estoque);
         }
-    gotoxy(46, 1); system("pause");
+    gotoxy(40, 1); system("pause");
     system("cls");
 
     }while(opcao != 0);
     
-
-	return 0;
+    return 0;
 }
