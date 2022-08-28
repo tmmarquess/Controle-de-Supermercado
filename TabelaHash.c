@@ -154,7 +154,7 @@ no *buscaPorChave(tabelaHash *tabela, char chave[]){
         return NULL; // retorna null caso o item nÃ£o exista
 }
 
-// verifica se a tabela cheia (com pelo menos um produto em todas as posições)
+// verifica se a tabela cheia (com pelo menos um produto em todas as posiï¿½ï¿½es)
 bool cheia(tabelaHash *tabela) {
 	for (int i = 0; i < TAMANHO; i++) {
 		if ((*tabela)[i] == NULL) { 
@@ -162,6 +162,16 @@ bool cheia(tabelaHash *tabela) {
 		}
 	}
 	return true; // todas as posicoes estao ocupadas portanto esta cheia
+}
+
+// verifica se a tabela ta vazia
+bool vazia(tabelaHash *tabela) {
+	for (int i = 0; i < TAMANHO; i++) {
+		if ((*tabela)[i] != NULL) { 
+			return false; // se encontrar algum diferente de null nao esta vazia
+		}
+	}
+	return true; 
 }
 
 int tamanho(tabelaHash *tabela) {
