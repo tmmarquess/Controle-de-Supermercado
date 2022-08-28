@@ -2,15 +2,21 @@
 
 
 int main(){
+	
+	system("title SISTEMA DE CONTROLE DE MERCADO");
     tabelaHash Estoque;
     iniciaTabela(&Estoque);
     produto prodNovo;
     int opcao;
-        
+    
+    Title();
+    system("pause");
+    
     do
     {
+    	textColor(3);
     	desenhaBordas();
-        opcao = printMENU();
+        opcao = printOpcoes();
         system("cls");
         if(opcao == 1)
         {
@@ -26,7 +32,8 @@ int main(){
         	desenhaBordas();
             printBusca(&Estoque);
         }
-    gotoxy(40, 1); system("pause");
+       
+    gotoxy(35, 1); system("pause");
     system("cls");
 
     }while(opcao != 0);

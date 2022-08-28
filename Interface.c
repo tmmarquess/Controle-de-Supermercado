@@ -1,55 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <conio.h>
 #include <string.h>
+
 #include "TabelaHash.c"
-#include <windows.h>
+#include "art.c"
 
 
-void gotoxy(int x, int y)
-{
-  COORD coord;
-  coord.X = x;
-  coord.Y = y;
-  SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-}
 
-void printColoured(int color_id, char string[])
-{
-    HANDLE  hConsole;
-    hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-
-    SetConsoleTextAttribute(hConsole, color_id);
-    printf("%s\n", string);
-    SetConsoleTextAttribute(hConsole, 7);
-}
-
-void desenhaBordas()
-{
-	// cantos da borda
-	gotoxy(35, 3);  printf(" %c", 201);
-	gotoxy(75, 3);  printf(" %c", 187);
-	gotoxy(35, 20); printf(" %c", 200);
-	gotoxy(75, 20); printf(" %c", 188);
-	
-	//linha vertical | |
-	for(int i = 4; i < 20; i++)
-	{
-		gotoxy(35, i); printf(" %c", 186);
-		gotoxy(75, i); printf(" %c", 186);
-	}
-	
-	//linha horizontal -- 
-	for(int i=37; i < 76; i++)
-	{
-		gotoxy(i, 3);  printf("%c", 205);
-		gotoxy(i, 20); printf("%c", 205);
-	}
-
-}
-
-
-int printMENU()
+int printOpcoes()
 {
     int opcao;
     gotoxy(46, 3);
@@ -102,15 +58,17 @@ void printBusca(tabelaHash *tabela)
     no *busca = buscaPorChave(tabela, chave);
     if(busca == NULL)
     {
-        gotoxy(40, 7); printColoured(12, "O ITEM ESTA FORA DE ESTOQUE!");
+        gotoxy(40, 7); printColoured(12, "O ITEM ESTA FORA DE ESTOQUE!\n");
     }
     else
     {
+    	SetConsoleTextAttribute( GetStdHandle(STD_OUTPUT_HANDLE), 2);
         gotoxy(40, 7);  printf("Nome: %s\n", busca -> produto.nome);
         gotoxy(40, 8);  printf("Codigo: %s\n", busca -> produto.codigo);
         gotoxy(40, 9);  printf("Quantidade: %d\n", busca -> produto.quantidade);
         gotoxy(40, 10); printf("Preco: %.2f\n", busca -> produto.preco);
-    }
+    	SetConsoleTextAttribute( GetStdHandle(STD_OUTPUT_HANDLE), 7);
+	}
 
 }
 
@@ -118,4 +76,9 @@ void printImprimir(tabelaHash tabela)
 {
 	imprimeTabela(tabela);
 
+}
+
+void printTelaInicial()
+{
+	
 }
