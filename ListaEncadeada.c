@@ -74,15 +74,10 @@ void retirarNo(no **primeiroItem, int index){
     // verifica se o index a se retirar está contido na lista
     if(index < qntDeItens && index >= 0){
         if(index == 0){
-            if(qntDeItens == 1){
-                free(*primeiroItem);
-                (*primeiroItem) = NULL;
-            }else{
-                no *aux = (*primeiroItem);
-                (*primeiroItem) = (*primeiroItem) -> prox;
-                (*primeiroItem) -> ant = NULL;
-                free(aux);
-            }
+            no *aux = (*primeiroItem);
+            (*primeiroItem) = (*primeiroItem) -> prox;
+            (*primeiroItem) -> ant = NULL;
+            free(aux);
         }else{
             for(int i = 0; i < index-1; i++){
                 atual = atual -> prox;
@@ -105,10 +100,10 @@ void imprimeLista(no *primeiroItem){
     }else{
         no *atual = primeiroItem;
         while(atual != NULL){
-            printf("Nome: %s\n", atual -> produto.nome);
-            printf("Codigo: %s\n", atual -> produto.codigo);
-            printf("Quantidade: %d\n", atual -> produto.quantidade);
-            printf("Preco: R$%.2f\n", atual -> produto.preco);
+            printf("   Nome: %s\n", atual -> produto.nome);
+            printf("   Codigo: %s\n", atual -> produto.codigo);
+            printf("   Quantidade: %d\n", atual -> produto.quantidade);
+            printf("   Preco: R$%.2f\n", atual -> produto.preco);
             printf("\n\n");
 
             atual = atual -> prox;

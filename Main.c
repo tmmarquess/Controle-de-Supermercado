@@ -1,7 +1,6 @@
 #include "Interface.c"
 
-
-void main()
+int main()
 {
 	system("title CONTROLE DE ESTOQUE");
 	tabelaHash Estoque;
@@ -9,16 +8,11 @@ void main()
     produto prodNovo;
 	
     int opcao;
-    char lista[5][40]={"ADICIONAR PRODUTO", "REMOVER PRODUTO", "PESQUISAR PRODUTO", "LISTAR PRODUTOS", "LIMPAR ESTOQUE"};
+    char lista[5][40]={"ADICIONAR PRODUTO", "REMOVER PRODUTO", "PESQUISAR PRODUTO", "LISTAR PRODUTOS", "SITUACAO DO SISTEMA"};
     
     do{
-    	desenhaBordas(35, 85, 4, 20);
        opcao = printMENU(lista);
        system("cls");
-    
-       if (opcao == 0){
-       break;
-       }
        
        if(opcao == 1)
         {
@@ -28,7 +22,7 @@ void main()
         
         if(opcao == 2)
         {
-            printf("\n\nremover\n\n");
+            printRemover(&Estoque);
         }
         
          if(opcao == 3)
@@ -40,10 +34,12 @@ void main()
         }
 
 		if(opcao == 5) {
-        	printf("\n\nlimpar\n\n");
+        	printStatus();
         }
         
         gotoxy(35, 1); system("pause");
         system("cls");
+    }while(opcao != 0);
 
+	return 0;
 }

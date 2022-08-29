@@ -2,14 +2,14 @@
 #include "art.c"
 
 #define LINHA_1 6
-#define COLUNA_1 50
+#define COLUNA_1 10
 #define QUANTIDADE 5
 
 int printMENU(char lista[QUANTIDADE][40]){
      int opcao = 1, lin2, col2, linha, i, tamMaxOpcao, tecla;
-     
+     desenhaBordas(5, 45, 1, 20);
      tamMaxOpcao = strlen(lista[0]);
-     gotoxy(57, 4); printf("  MENU  ");
+     gotoxy(20, 1); printf("  MENU  ");
      for(i = 1; i < QUANTIDADE; i++){
        if(strlen(lista[i]) > tamMaxOpcao){
           tamMaxOpcao = strlen(lista[i]); 
@@ -59,21 +59,21 @@ int printMENU(char lista[QUANTIDADE][40]){
 produto printInserir()
 {
 	mostraCursor();
-	desenhaBordas(35, 85, 4, 20);
+	desenhaBordas(5, 45, 1, 20);
     char nome[30];
     char codigo[6];
     float preco;
     int quantidade;
 	
-	gotoxy(55, 4);
+	gotoxy(10, 1);
     printf(" INSERIR \n");
-    gotoxy(45, 8); printf("Nome: ");
+    gotoxy(10, 8); printf("Nome: ");
     scanf("%s",nome);
-    gotoxy(45, 9); printf("Codigo: ");
+    gotoxy(10, 9); printf("Codigo: ");
     scanf("%s",codigo);
-    gotoxy(45, 10); printf("Preco: R$");
+    gotoxy(10, 10); printf("Preco: R$");
     scanf("%f",&preco);
-    gotoxy(45, 11); printf("Quantidade: ");
+    gotoxy(10, 11); printf("Quantidade: ");
     scanf("%d", &quantidade);
 
     produto prodNovo;
@@ -87,24 +87,24 @@ produto printInserir()
 
 void printBusca(tabelaHash *tabela)
 {
-	desenhaBordas(35, 85, 4, 20);
+	desenhaBordas(5, 45, 1, 20);
     char chave[19];
 
-    gotoxy(52, 4); printf(" BUSCAR PRODUTO \n");
-    gotoxy(45, 7); printf("Codigo: ");
+    gotoxy(15, 1); printf(" BUSCAR PRODUTO \n");
+    gotoxy(10, 7); printf("Codigo: ");
     scanf("%s",chave);
     no *busca = buscaPorChave(tabela, chave);
     if(busca == NULL)
     {
-        gotoxy(45, 10); printColoured(12, "O ITEM ESTA FORA DE ESTOQUE!\n");
+        gotoxy(15, 10); printColoured(12, "O ITEM ESTA FORA DE ESTOQUE!\n");
     }
     else
     {
     	SetConsoleTextAttribute( GetStdHandle(STD_OUTPUT_HANDLE), 2);
-        gotoxy(45, 10);  printf("Nome: %s\n", busca -> produto.nome);
-        gotoxy(45, 11);  printf("Codigo: %s\n", busca -> produto.codigo);
-        gotoxy(45, 12);  printf("Quantidade: %d\n", busca -> produto.quantidade);
-        gotoxy(45, 13); printf("Preco: R$%.2f\n", busca -> produto.preco);
+        gotoxy(5, 10);  printf("Nome: %s\n", busca -> produto.nome);
+        gotoxy(5, 11);  printf("Codigo: %s\n", busca -> produto.codigo);
+        gotoxy(5, 12);  printf("Quantidade: %d\n", busca -> produto.quantidade);
+        gotoxy(5, 13); printf("Preco: R$%.2f\n", busca -> produto.preco);
     	SetConsoleTextAttribute( GetStdHandle(STD_OUTPUT_HANDLE), 7);
 	}
 
@@ -112,9 +112,33 @@ void printBusca(tabelaHash *tabela)
 
 void printImprimir(tabelaHash tabela)
 {
-	desenhaBordas(35, 85, 4, 20);
+	
 	imprimeTabela(tabela);
+}
 
+void printRemover(tabelaHash *tabela)
+{
+	desenhaBordas(5, 45, 1, 20);
+    char chave[19];
+    bool removed;
+
+    gotoxy(15, 1); printf(" REMOVER PRODUTO \n");
+    gotoxy(10, 5); printf("Codigo: ");
+    scanf("%s",chave);
+    if(removed == true)
+    {
+        gotoxy(10, 7); printColoured(BLUE, "PRODUTO REMOVIDO");
+    }
+    else
+    {
+    	gotoxy(10, 7); printColoured(RED, "PRODUTO JA FORA DE ESTOQUE");
+	}
+}
+
+printStatus()
+{
+	desenhaBordas(5, 45, 1, 20);
+	printf("statis");
 }
      
 
