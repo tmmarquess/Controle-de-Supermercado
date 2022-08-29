@@ -165,7 +165,7 @@ bool cheia(tabelaHash *tabela) {
 }
 
 // verifica se a tabela ta vazia
-bool vazia(tabelaHash *tabela) {
+bool empty(tabelaHash *tabela) {
 	for (int i = 0; i < TAMANHO; i++) {
 		if ((*tabela)[i] != NULL) { 
 			return false; // se encontrar algum diferente de null nao esta vazia
