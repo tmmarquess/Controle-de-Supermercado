@@ -214,6 +214,7 @@ void imprimeTabela(tabelaHash tabela){
         if(tabela[i] != NULL){ // se o item do vetor não for nulo, imprime a lista contida nele 
             printf("\nIndex %d:\n", i);
 			imprimeLista(tabela[i]);
+			printf("======================================================\n\n");
         }
     }
 }

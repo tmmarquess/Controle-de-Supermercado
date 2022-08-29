@@ -3,14 +3,16 @@
 
 #define LINHA_1 6
 #define COLUNA_1 10
-#define QUANTIDADE 5
+#define QUANTIDADE 6
 
 int printMENU(char lista[QUANTIDADE][40]){
      int opcao = 1, lin2, col2, linha, i, tamMaxOpcao, tecla;
+     
      desenhaBordas(5, 45, 1, 20);
      tamMaxOpcao = strlen(lista[0]);
-     gotoxy(20, 1); printf("  MENU  ");
-     for(i = 1; i < QUANTIDADE; i++){
+     gotoxy(15, 1); printf("  CONTROLE DE ESTOQUE  ");
+     
+	 for(i = 1; i < QUANTIDADE; i++){
        if(strlen(lista[i]) > tamMaxOpcao){
           tamMaxOpcao = strlen(lista[i]); 
        }
@@ -122,10 +124,16 @@ void printBusca(tabelaHash *tabela)
 
 }
 
-void printImprimir(tabelaHash tabela)
+void printImprimir(tabelaHash *tabela)
 {
-	
-	imprimeTabela(tabela);
+	if(*tabela == NULL)
+	{
+		gotoxy(10, 7); printColoured(RED, "SEM PRODUTOS NO ESTOQUE");
+	}
+	else
+	{
+		imprimeTabela(tabela);	
+	}
 }
 
 void printRemover(tabelaHash *tabela)
@@ -134,7 +142,7 @@ void printRemover(tabelaHash *tabela)
     char chave[19];
     bool removed;
 
-    gotoxy(15, 1); printf(" REMOVER PRODUTO \n");
+    gotoxy(15, 1); printf(" REMOVER PRODUTO ");
     gotoxy(10, 5); printf("Codigo: ");
     scanf("%s",chave);
 
@@ -153,7 +161,7 @@ void printStatus(tabelaHash *tabela)
 {
 
 	desenhaBordas(5, 45, 1, 20);
-	gotoxy(15, 1); printf("STATUS\n");
+	gotoxy(15, 1); printf("  STATUS  ");
 	if (empty(tabela)) {
 		gotoxy(10, 5); printf("Tabela Vazia: TRUE");
 	} else {
@@ -168,5 +176,13 @@ void printStatus(tabelaHash *tabela)
 	gotoxy(10, 11); printf("Fator de Carga: %.4f", fatorCarga(tabela));
 }
      
+     
+void printLimpar(tabelaHash *tabela)
+{
+	desenhaBordas(5, 45, 1, 20);
+	limpar(tabela);
+	gotoxy(15, 1); printf(" LIMPAR TABELA ");
+	gotoxy(10,7); printColoured(GREEN, "eSTOQUE ESVAZIADO!");
+}
 
     

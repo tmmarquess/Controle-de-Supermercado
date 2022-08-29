@@ -105,11 +105,11 @@ void imprimeLista(no *primeiroItem){
     }else{
         no *atual = primeiroItem;
         while(atual != NULL){
-            printf("Nome: %s\n", atual -> produto.nome);
-            printf("Codigo: %s\n", atual -> produto.codigo);
-            printf("Quantidade: %d\n", atual -> produto.quantidade);
-            printf("Preco: %.2f\n", atual -> produto.preco);
-            printf("==========================================\n");
+            printf("\tNome: %s\n", atual -> produto.nome);
+            printf("\tCodigo: %s\n", atual -> produto.codigo);
+            printf("\tQuantidade: %d\n", atual -> produto.quantidade);
+            printf("\tPreco: %.2f\n\n", atual -> produto.preco);
+            
 
             atual = atual -> prox;
         }

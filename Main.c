@@ -8,7 +8,7 @@ int main()
     produto prodNovo;
 	
     int opcao;
-    char lista[5][40]={"ADICIONAR PRODUTO", "REMOVER PRODUTO", "PESQUISAR PRODUTO", "LISTAR PRODUTOS", "SITUACAO DO SISTEMA"};
+    char lista[6][40]={"ADICIONAR PRODUTO", "REMOVER PRODUTO", "PESQUISAR PRODUTO", "LISTAR PRODUTOS", "SITUACAO DO SISTEMA", "LIMPAR ESTOQUE"};
     
     do{
        opcao = printMENU(lista);
@@ -36,6 +36,11 @@ int main()
 		if(opcao == 5) {
         	printStatus(&Estoque);
         }
+        
+        if(opcao == 6)
+        {
+        	printLimpar(&Estoque);
+		}
         
         gotoxy(5, 25); system("pause");
         system("cls");
