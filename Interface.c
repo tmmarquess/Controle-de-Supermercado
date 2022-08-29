@@ -124,7 +124,7 @@ void printBusca(tabelaHash *tabela)
 
 }
 
-void printImprimir(tabelaHash *tabela)
+void printImprimir(tabelaHash tabela)
 {
 	if(*tabela == NULL)
 	{
@@ -182,7 +182,7 @@ void printLimpar(tabelaHash *tabela)
 	desenhaBordas(5, 45, 1, 20);
 	limpar(tabela);
 	gotoxy(15, 1); printf(" LIMPAR TABELA ");
-	gotoxy(10,7); printColoured(GREEN, "eSTOQUE ESVAZIADO!");
+	gotoxy(10,7); printColoured(GREEN, "ESTOQUE ESVAZIADO!");
 }
 
     
