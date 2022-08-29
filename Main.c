@@ -34,7 +34,7 @@ int main()
         }
 
 		if(opcao == 5) {
-        	printStatus();
+        	printStatus(&Estoque);
         }
         
         gotoxy(35, 1); system("pause");
