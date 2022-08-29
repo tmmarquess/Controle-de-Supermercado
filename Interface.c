@@ -125,18 +125,19 @@ void printRemover(tabelaHash *tabela)
     gotoxy(15, 1); printf(" REMOVER PRODUTO \n");
     gotoxy(10, 5); printf("Codigo: ");
     scanf("%s",chave);
+
+    removed = remover(tabela, chave);
     if(removed == true)
     {
         gotoxy(10, 7); printColoured(BLUE, "PRODUTO REMOVIDO");
     }
     else
     {
-    	gotoxy(10, 7); printColoured(RED, "PRODUTO JA FORA DE ESTOQUE");
+    	gotoxy(10, 7); printColoured(RED, "PRODUTO NAO ENCONTRADO");
 	}
 }
 
-printStatus()
-{
+void printStatus(){
 	desenhaBordas(5, 45, 1, 20);
 	printf("statis");
 }
