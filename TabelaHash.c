@@ -203,6 +203,11 @@ void limpar(tabelaHash *tabela)
 	}
 }
 
+float fatorCarga(tabelaHash *tabela) {
+	float num = (float)tamanho(tabela)/(float)TAMANHO;
+	return num;
+}
+
 // Imprime todos os produtos contidos na tabela
 void imprimeTabela(tabelaHash tabela){
     for(int i = 0; i < TAMANHO; i++){ //Percorre todo o vetor da tabelaHash

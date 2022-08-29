@@ -137,9 +137,23 @@ void printRemover(tabelaHash *tabela)
 	}
 }
 
-void printStatus(){
+void printStatus(tabelaHash *tabela)
+{
+
 	desenhaBordas(5, 45, 1, 20);
-	printf("statis");
+	gotoxy(15, 1); printf("STATUS\n");
+	if (empty(tabela)) {
+		gotoxy(10, 5); printf("Tabela Vazia: TRUE");
+	} else {
+		gotoxy(10, 5); printf("Tabela Vazia: FALSE");
+	}
+	if (cheia(tabela)) {
+		gotoxy(10, 7); printf("Tabela Cheia: TRUE");
+	} else {
+		gotoxy(10, 7); printf("Tabela Cheia: FALSE");
+	}
+	gotoxy(10, 9); printf("Quantidade de Itens: %d", tamanho(tabela));
+	gotoxy(10, 11); printf("Fator de Carga: %.4f", fatorCarga(tabela));
 }
      
 
