@@ -1,6 +1,6 @@
 #include "ListaEncadeada.c"
 #include <math.h>
-#define TAMANHO 19 //Tamanho do vetor estático da tabelaHash
+#define TAMANHO 21 //Tamanho do vetor estático da tabelaHash
 
 //Definindo um tipo de dado tabelaHash
 typedef no *tabelaHash[TAMANHO];
@@ -35,6 +35,7 @@ int getTamanho(char string[]){
 int calculaHash(char chave[]){
     int letras = getTamanho(caracteres); //tamanho do vetor de caracteres
     int tamanho = getTamanho(chave); //tamanho da chave passada por parametro
+    int expoente = tamanho;
 
     bool isNumero = false; //booleano que verifica se o index é um numero
     bool isLetra = false; //booleano que verifica se o index é uma letra
@@ -42,10 +43,12 @@ int calculaHash(char chave[]){
     int codigoHash = 0; //código hash a ser gerado
 
     for(int i = 0; i < tamanho; i++){ //percorre toda a String Chave
+    	expoente --;
+    	
         for(int j = 0; j < 10; j++){//Percorre toda o vetor de numeros
             if(chave[i] == numeros[j]){//Se o index da chave for um numero
                 isNumero = true;
-                codigoHash += (j * pow(10, i));
+                codigoHash += (j * pow(11, expoente));
                 break;
             }
         }
@@ -53,13 +56,13 @@ int calculaHash(char chave[]){
             for(int j = 0; j < letras; j++){ // percorre todo o vetor de caracteres
                 if(chave[i] == caracteres[j]){//Se o index da chave for um caractere
                     isLetra = true;
-                    codigoHash += (j * pow(10, i));
+                    codigoHash += (j * pow(11, expoente));
                     break;
                 }
             }
             if(!isLetra){//Se o index não for uma letra, nem um numero
                 int ascii = chave[i]; //pega o valor do char na tabela ASCII
-                codigoHash += (ascii * pow(10, i));
+                codigoHash += (ascii * pow(11, expoente));
             }
         }
         isNumero = isLetra = false;//reseta as variáveis
