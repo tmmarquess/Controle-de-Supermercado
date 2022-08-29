@@ -121,6 +121,26 @@ bool isIgual(char chave1[], char chave2[]){
     return true; // se Não retornou falso, logo são iguais
 }
 
+bool remover(tabelaHash *tabela, char chave[]){
+    int hash = calculaHash(chave);
+    int index = getIndex(hash);
+
+    no *aux = (*tabela)[index];
+    int pos = 0;
+    if(aux != NULL){
+        while (aux != NULL){
+            if(isIgual(aux -> produto.codigo, chave)){
+                retirarNo(&(*tabela)[index], pos);
+                return true;
+            }
+            pos += 1;
+            aux = aux -> prox;
+        }
+        
+    }
+    return false;
+}
+
 //Busca um item pela sua chave e retorna a variável nó que contém ele
 no *buscaPorChave(tabelaHash *tabela, char chave[]){
         int hash = calculaHash(chave); //gera o hash dessa chave
@@ -133,6 +153,54 @@ no *buscaPorChave(tabelaHash *tabela, char chave[]){
             node = node -> prox;
         }
         return NULL; // retorna null caso o item não exista
+}
+
+// verifica se a tabela cheia (com pelo menos um produto em todas as posi��es)
+bool cheia(tabelaHash *tabela) {
+	for (int i = 0; i < TAMANHO; i++) {
+		if ((*tabela)[i] == NULL) { 
+			return false; // se alguma posicao nao for null entao nao esta cheia
+		}
+	}
+	return true; // todas as posicoes estao ocupadas portanto esta cheia
+}
+
+// verifica se a tabela ta vazia
+bool empty(tabelaHash *tabela) {
+	for (int i = 0; i < TAMANHO; i++) {
+		if ((*tabela)[i] != NULL) { 
+			return false; // se encontrar algum diferente de null nao esta vazia
+		}
+	}
+	return true; 
+}
+
+int tamanho(tabelaHash *tabela) {
+	int tam = 0;
+
+	for (int i = 0; i < TAMANHO; i++) {
+		if ((*tabela)[i] != NULL) {
+			no *aux = (*tabela)[i];
+			
+			while (aux != NULL) {
+				aux = aux->prox;
+				tam++;
+			}
+		}
+	}
+	
+	return tam;
+}
+
+void limpar(tabelaHash *tabela)
+ {	
+	for (int i = 0; i < TAMANHO; i++) 
+	{
+			while ((*tabela)[i]!= NULL) 
+			{
+				retirarNo(&(*tabela)[i], 0);
+			}
+	}
 }
 
 // Imprime todos os produtos contidos na tabela

@@ -1,7 +1,7 @@
 #include "Interface.c"
 
 
-int main()
+void main()
 {
 	system("title CONTROLE DE ESTOQUE");
 	tabelaHash Estoque;
@@ -46,10 +46,4 @@ int main()
         gotoxy(35, 1); system("pause");
         system("cls");
 
-    }while(opcao != 0);
-    
-  textColor(WHITE, BG_BLACK);
-  gotoOpcao(24,1);
-  
-  return 0;
 }
