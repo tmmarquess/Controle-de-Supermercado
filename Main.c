@@ -13,7 +13,7 @@ int main()
     do{
        opcao = printMENU(lista);
        system("cls");
-       
+        
        if(opcao == 1)
         {
             prodNovo = printInserir();
@@ -37,7 +37,7 @@ int main()
         	printStatus(&Estoque);
         }
         
-        gotoxy(35, 1); system("pause");
+        gotoxy(5, 25); system("pause");
         system("cls");
     }while(opcao != 0);
 

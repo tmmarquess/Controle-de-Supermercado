@@ -25,11 +25,18 @@ int printMENU(char lista[QUANTIDADE][40]){
         linha=LINHA_1 + 2;
         
         for(i = 0 ;i < QUANTIDADE; i++){           
-           if(i + 1== opcao)textColor(BLACK, BG_YELLOW);
-           else textColor(WHITE, BG_BLACK);
-        gotoOpcao(linha,COLUNA_1+2);
-        printf("%s",lista[i]);
-        linha +=2;
+           //if(i + 1== opcao)textColor(BLACK, BG_YELLOW);
+            //definir(1,23,8,6+i+2,8+i+2,33);
+           textColor(WHITE, BG_BLACK);
+           gotoOpcao(linha,COLUNA_1+2 );
+           //condicao da seta de navegacao
+           if(i + 1== opcao){
+            printf("%c", 175);
+           }else{
+            printf(" ", 175);
+           }
+           printf(" %s",lista[i]);
+           linha +=2;
         }
        
       
@@ -45,12 +52,12 @@ int printMENU(char lista[QUANTIDADE][40]){
        }
        //Seta para cima
        else if(tecla==72 && opcao>1){
-            opcao--;
+        opcao--;
        
        }
        //Seta para baixo
        else if(tecla==80){
-       	if(opcao< QUANTIDADE) opcao++;         
+       	if(opcao< QUANTIDADE) opcao++;
        }
      }
      return opcao;
@@ -82,6 +89,11 @@ produto printInserir()
     prodNovo.preco = preco;
     prodNovo.quantidade = quantidade;
 
+
+    definir(0,30,7,15,17,39);
+    gotoxy(12,16);
+    printf("DADOS DO PRODUTO SALVO");
+
     return prodNovo;
 }
 
@@ -96,15 +108,15 @@ void printBusca(tabelaHash *tabela)
     no *busca = buscaPorChave(tabela, chave);
     if(busca == NULL)
     {
-        gotoxy(15, 10); printColoured(12, "O ITEM ESTA FORA DE ESTOQUE!\n");
+        gotoxy(10, 10); printColoured(12, "O ITEM ESTA FORA DE ESTOQUE!\n");
     }
     else
     {
     	SetConsoleTextAttribute( GetStdHandle(STD_OUTPUT_HANDLE), 2);
-        gotoxy(5, 10);  printf("Nome: %s\n", busca -> produto.nome);
-        gotoxy(5, 11);  printf("Codigo: %s\n", busca -> produto.codigo);
-        gotoxy(5, 12);  printf("Quantidade: %d\n", busca -> produto.quantidade);
-        gotoxy(5, 13); printf("Preco: R$%.2f\n", busca -> produto.preco);
+        gotoxy(10, 10);  printf("Nome: %s\n", busca -> produto.nome);
+        gotoxy(10, 11);  printf("Codigo: %s\n", busca -> produto.codigo);
+        gotoxy(10, 12);  printf("Quantidade: %d\n", busca -> produto.quantidade);
+        gotoxy(10, 13); printf("Preco: R$%.2f\n", busca -> produto.preco);
     	SetConsoleTextAttribute( GetStdHandle(STD_OUTPUT_HANDLE), 7);
 	}
 

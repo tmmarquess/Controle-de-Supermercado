@@ -103,3 +103,65 @@ void desenhaBordas(int x1, int x2,  int y1, int y2)
 	}
 
 }
+/* Fun��o Para criar espa�amentos */
+void espacamneto(int tamanho, char codigo){
+    int i;
+    for(i = 0; i <= tamanho; i++)
+        printf("%c", codigo);
+    return;
+}
+
+
+/* Barrinhas laterais */
+void barras(int tamanho, char codigo,int TT, int a,int a2,int z){
+    int i, j;
+
+    for(i = 0, j = z; i < tamanho; i++, j++){
+
+        gotoxy(a,j);
+        printf("%c", codigo);
+        espacamneto(TT, ' ');
+        gotoxy(a2,j);
+        printf("%c\n", codigo);
+    }
+return;
+}
+
+// caixinha
+void criar_caixinha(int canto1,int canto2,int canto3,int canto4,
+                    int CODcima, int CODlado,int tamanho,int TT,
+                    int x,int y, int y2,int a2, int z){
+    z = y2 - tamanho;
+    gotoxy(x,y);
+    printf("%c", canto1); espacamneto(TT, CODcima); printf("%c\n", canto2);
+    barras(tamanho,CODlado, TT,x,a2,z );
+    gotoxy(x,y2);
+    printf("%c",canto3); espacamneto(TT, CODcima); printf("%c\n", canto4);
+}
+
+// funcao para definir
+void definir(int TAM_barras, int espacamento, int x_su, int  y_su, int y_infe, int xbarra_esquer){
+
+    int z;
+    int canto1 = 201;
+    int canto2 = 187;
+    int canto3 = 200;
+    int canto4 = 188;
+
+    int CODcima = 205;
+    int CODlado = 186;
+    // tamanho das barras
+    int tamanho = TAM_barras;
+    //espacamneto
+    int TT = espacamento;
+    // barras superior
+    int x =  x_su ; int y =  y_su;
+
+    // barra inferior
+    int y2 = y_infe;
+
+    // barras laterais esquerda
+    int a2 = xbarra_esquer;
+criar_caixinha(canto1, canto2, canto3, canto4,CODcima, CODlado, tamanho, TT,
+                x,y,y2,a2,z);
+}
